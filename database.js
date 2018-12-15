@@ -16,7 +16,7 @@ function getAllProducts(req, res) {
         })
 }
 function getAlldetail(req, res) {
-    db.any('SELECT * FROM categories INNER JOIN products ON categories.category_id=products.category_id;')
+    db.any('SELECT COUNT(category_name),category_name FROM categories INNER JOIN products ON categories.category_id=products.category_id Group by category_name;')
         .then(function (data) {
             res.status(200)
                 .json({
