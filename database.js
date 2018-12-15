@@ -15,10 +15,24 @@ function getAllProducts(req, res) {
             console.log('ERROR:', error)
         })
 }
-
+function getAlldetail(req, res) {
+    db.any('SELECT * FROM categories INNER JOIN products ON categories.category_id=products.category_id;')
+        .then(function (data) {
+            res.status(200)
+                .json({
+                    status: 'success',
+                    data: data,
+                    message: 'Retrieved ALL products'
+                });
+        })
+        .catch(function (error) {
+            console.log('ERROR:', error)
+        })
+}
 
 module.exports = {
-    getAllProducts
+    getAllProducts,
+    getAlldetail
 
     
 }

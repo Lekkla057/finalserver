@@ -29,6 +29,7 @@ app.get('/api/json', function (req, res) {
 });
 
 app.get('/api/categories', db.getAllProducts);
+app.get('/api/detail', db.getAlldetail);
 
 
 
